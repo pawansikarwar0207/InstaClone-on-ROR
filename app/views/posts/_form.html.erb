@@ -1,0 +1,54 @@
+
+<%= form_with(model: post) do |form| %>
+ <!--  <%#if post.errors.any? %>
+  <div style="color: red">
+    <h5><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h5>
+
+    <ul>
+      <%# post.errors.each do |error| %>
+      <li><%#= error.full_message %></li>
+      <%# end %>
+    </ul>
+  </div>
+  <%# end %> -->
+
+  <div class="form-group">
+    <% invalid = post.errors.include?(:title) %>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title, class:"form-control mt-2 mb-2" %>
+    <% if invalid %>
+    <p style="color: red"><%= post.errors.full_messages_for(:title).join(" , ") %></p>
+    <% end -%>
+  </div>
+
+  <div class="form-group">
+    <% invalid = post.errors.include?(:description) %>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description, class:"form-control mt-2 mb-2" %>
+    <% if invalid %>
+    <p style="color: red"><%= post.errors.full_messages_for(:description).join(" , ") %></p>
+    <% end -%>
+  </div>
+
+  <div class="form-group">
+    <% invalid = post.errors.include?(:keywords) %>
+    <%= form.label :keywords, style: "display: block" %>
+    <%= form.text_field :keywords, class:"form-control mt-2 mb-2" %>
+    <% if invalid %>
+    <p style="color: red"><%= post.errors.full_messages_for(:keywords).join(" , ") %></p>
+    <% end -%>
+  </div>
+
+   <div>
+    <%= form.text_field :user_id,  type: "hidden", value: "#{current_user.id}" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.file_field :images, multiple:true, class:"mt-2 mb-2" %>
+  </div>
+
+  <div class="form-group"  >
+    <%= form.submit class:"btn btn-primary mt-2" %>
+  </div>
+  <% end %>
+

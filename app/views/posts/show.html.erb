@@ -1,0 +1,14 @@
+<div class="col-lg-8 mx-auto mt-5 mb-5">
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @post %>
+  <%= link_to "Back to posts", posts_path , class:"btn btn-primary mt-3 mb-3"%> 
+
+  <% if user_signed_in? %>
+  <div>
+    <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-primary mt-3 mb-3" %> |
+    <%= link_to "Destroy this post", @post, data: { turbo_confirm: 'Are You Sure ?', turbo_method: :delete} , class:"btn btn-primary mt-3 mb-3" %>
+  </div>
+  <% end -%>
+  <%#= render 'comments/form' %>
+</div>

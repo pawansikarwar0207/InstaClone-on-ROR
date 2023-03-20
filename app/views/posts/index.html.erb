@@ -1,0 +1,18 @@
+
+<%= stylesheet_link_tag("post") %>
+<p style="color: green"><%= notice %></p>
+<div class="col-lg-8 mx-auto mb-5 mt-4">
+
+  <!-- <h1 class="card-title text-center">Posts</h1> -->
+  <!-- <hr> -->
+  <% @posts.each do |post| %>
+  <%= render post %>
+  <%#= link_to "New post", new_post_path , class: "btn btn-primary mb-3" %>
+  <% end %>
+
+</div>
+
+
+
+
+
